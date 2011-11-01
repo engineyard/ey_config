@@ -20,7 +20,7 @@ describe EY::Config do
     EY::Config.config_path = first_config.path
   end
 
-  context "with a deploy.yml present" do
+  context "with a config file present" do
     context "which is valid" do
       before(:each) do
         first_config = write_out_deploy_yml(YAML.dump(SAMPLE_DATA))
@@ -32,7 +32,7 @@ describe EY::Config do
         @data.unlink
       end
 
-      it "reads from deploy.yml" do
+      it "reads from config file" do
         EY::Config.get.should have_key(:some_app)
         EY::Config.get[:some_app][:foo].should == 1
       end
@@ -59,10 +59,7 @@ describe EY::Config do
   end
   
   it "raises an error if deploy.yml is missing" do
-    config_path = EY::Config.config_path
-    File.exists?(config_path).should be_false
-    
-    expect { EY::Config.init }.to raise_error
+    expect { EY::Config.init }.to raise_error(/Expected to find EY::Config YAML file at one of/)
   end
 
   it "raises an error if deploy.yml has bad permissions" do

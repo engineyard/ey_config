@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
-  s.name = 'engineyard-configuration'
-  s.version = '1.0pre01'
+  s.name = 'ey_config'
+  s.version = '0.0'
   s.date = '2011-10-19'
   s.summary = 'Engine Yard Configuration'
   s.description = 'Access to additional services for Engine Yard customers.'

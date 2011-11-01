@@ -1,0 +1,13 @@
+PATH
+  remote: ../../../../ey_config
+  specs:
+    ey_config (0.0)
+
+GEM
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ey_config!
