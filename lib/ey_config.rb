@@ -1,7 +1,7 @@
 module EY
   class Config
     class << self
-      PATHS_TO_CHECK = ['config/ey_config_deploy.yml', 'config/ey_config_local.yml']
+      PATHS_TO_CHECK = ['config/ey_services_config_deploy.yml', 'config/ey_services_config_local.yml']
 
       def config_path=(val)
         @full_path = nil
