@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = 'Access to additional services for Engine Yard customers.'
   s.authors     = ["Jacob Burkhart & Michael Broadhead & others"]
   s.email       = ["jacob@engineyard.com"]
-  s.files = Dir.glob("lib/**/*") + %w(LICENSE README.rdoc) 
+  s.files = Dir.glob("lib/**/*") + %w(LICENSE README.md) 
   s.homepage = 'http://github.com/engineyard/ey_config'
 end
 
