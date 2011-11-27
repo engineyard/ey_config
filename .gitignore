@@ -1,3 +1,4 @@
 vendor/bundled_gems
 .bundle
 .DS_Store
+Gemfile.lock
