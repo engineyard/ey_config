@@ -9,7 +9,10 @@ Gem::Specification.new do |s|
   s.description = 'Access to additional services for Engine Yard customers.'
   s.authors     = ["Jacob Burkhart & Michael Broadhead & others"]
   s.email       = ["jacob@engineyard.com"]
-  s.files = Dir.glob("lib/**/*") + %w(LICENSE README.md) 
+  s.files = Dir.glob("{bin,lib}/**/*") + %w(LICENSE README.md) 
   s.homepage = 'http://github.com/engineyard/ey_config'
+  s.executables = ['ey_config_local']
+  s.default_executable = 'ey_config_local'
+  s.require_path = 'lib'
 end
 

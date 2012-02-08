@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+$:.unshift(File.expand_path('../../lib', __FILE__))
+require 'ey_config'
+
+if ARGV.empty? || ARGV.first == '-h' || ARGV.first == '--help'
+  STDERR.puts "EY::Config::Local"
+  STDERR.puts "  Generate YAML file placeholder for development/testing with the EY::Config gem."
+  STDERR.puts "  "
+  STDERR.puts "  Usage:"
+  STDERR.puts "  #{__FILE__} <key> [<key2> [<key3> [...]]]"
+  exit 1
+end
+
+EY::Config::Local.generate *ARGV
+STDERR.puts "Wrote to #{File.expand_path(EY::Config::Local.config_path).inspect}."
