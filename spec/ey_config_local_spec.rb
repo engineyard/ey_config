@@ -40,10 +40,12 @@ describe EY::Config::Local do
 
     it 'should add the keys passed from the command line' do
       YAML.load_file(EY::Config::Local.config_path)['sample-service']['SOMEKEY'].should == 'SAMPLE'
+      EY::Config.warnings.should be_empty
     end
 
     it 'should leave the existing parameters intact' do
       YAML.load_file(EY::Config::Local.config_path)['a'].should == 'b'
+      EY::Config.warnings.should be_empty
     end
   end
 
@@ -58,6 +60,7 @@ describe EY::Config::Local do
 
     it 'should add the keys passed from the command line' do
       YAML.load_file(EY::Config::Local.config_path)['sample-service']['nested_attr']['VALUE'].should == 'SAMPLE'
+      EY::Config.warnings.should be_empty
     end
 
   end
@@ -73,6 +76,7 @@ describe EY::Config::Local do
 
     it 'should add the keys passed from the command line' do
       YAML.load_file(EY::Config::Local.config_path)['sample-service']['nested_attr']['VALUE'].should == 'SAMPLE'
+      EY::Config.warnings.should be_empty
     end
   end
 end

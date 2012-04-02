@@ -13,5 +13,25 @@ require 'ey_config'
 require 'rspec'
 require 'yaml'
 require 'awesome_print'
+require 'pry'
 
+EY::Config.class_eval do
+  class << self
+    def warn(arg)
+      warnings << arg
+    end
+    def warnings
+      @warnings ||= []
+    end
+    def reset!
+      @config = nil
+    end
+  end
+end
 
+RSpec.configure do |config|
+  config.before(:each) do
+    EY::Config.warnings.clear
+    EY::Config.reset!
+  end
+end
