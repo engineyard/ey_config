@@ -77,6 +77,19 @@ describe EY::Config do
       end
     end
 
+    context "which is empty hash" do
+      after(:each) do
+        @data.unlink
+      end
+
+      it "emits no warnings" do
+        first_config = write_out_deploy_yml({}.to_yaml)
+        EY::Config.config_path = first_config.path
+        EY::Config.get
+        EY::Config.warnings.should be_empty
+      end
+    end
+
     context "which does not have the format we expect" do
       after(:each) do
         @data.unlink

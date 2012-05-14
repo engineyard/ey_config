@@ -100,8 +100,9 @@ module EY
       end
 
       def valid_structure?(config)
-        config.respond_to?(:has_key?) and 
-            config.values.first.respond_to?(:has_key?)
+        config == {} or
+          (config.respond_to?(:has_key?) and
+            config.values.first.respond_to?(:has_key?))
       end
     end
   end
