@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'yaml'
 
 module EY
   class Config
@@ -12,7 +13,7 @@ module EY
           contents = existing_contents
           contents = {} unless contents.is_a?(Hash)
           tmp = contents
-          
+
           args[0 ... -1].each do |arg|
             tmp[arg] ||= {}
             tmp = tmp[arg]

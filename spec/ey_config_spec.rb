@@ -37,7 +37,7 @@ describe EY::Config do
       end
 
       it "prevents accidentally modifying the config" do
-        lambda{ EY::Config.get(:some_app)["foo"] = "BADDATA" }.should raise_error TypeError
+        lambda{ EY::Config.get(:some_app)["foo"] = "BADDATA" }.should raise_error /can't modify frozen Hash/
       end
 
       it "raises and warns for nonexistent keys" do
@@ -114,6 +114,6 @@ describe EY::Config do
     EY::Config.config_path = first_config.path
     File.chmod(0333, first_config.path)
 
-    expect { EY::Config.init }.to raise_error    
+    expect { EY::Config.init }.to raise_error
   end
 end
