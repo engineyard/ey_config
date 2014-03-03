@@ -31,6 +31,10 @@ describe EY::Config do
         @data.unlink
       end
 
+      it "can read the full content of the config" do
+        EY::Config.config.should == SAMPLE_DATA
+      end
+
       it "reads from config file" do
         EY::Config.get(:some_app, "foo").should == 1
         EY::Config.warnings.should be_empty
