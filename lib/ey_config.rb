@@ -31,6 +31,11 @@ module EY
           warn err_msg
           raise ArgumentError, err_msg
         end
+        begin
+          YAML
+        rescue
+          require 'yaml'
+        end
         @config = YAML.load_file(full_path)
         unless valid_structure?(@config)
           ey_config_empty_warning(full_path, @config)

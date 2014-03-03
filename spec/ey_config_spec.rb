@@ -37,7 +37,7 @@ describe EY::Config do
       end
 
       it "prevents accidentally modifying the config" do
-        lambda{ EY::Config.get(:some_app)["foo"] = "BADDATA" }.should raise_error TypeError
+        lambda{ EY::Config.get(:some_app)["foo"] = "BADDATA" }.should raise_error
       end
 
       it "raises and warns for nonexistent keys" do
