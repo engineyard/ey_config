@@ -6,6 +6,10 @@ module EY
       DEPLOYED_CONFIG_PATH = 'config/ey_services_config_deploy.yml'
       PATHS_TO_CHECK = [DEPLOYED_CONFIG_PATH, EY::Config::Local.config_path]
 
+      def config
+        @config || init
+      end
+
       def config_path=(val)
         @full_path = nil
         @config_paths = [val]
@@ -31,16 +35,21 @@ module EY
           warn err_msg
           raise ArgumentError, err_msg
         end
-        @config = YAML.load_file(full_path)
-        unless valid_structure?(@config)
-          ey_config_empty_warning(full_path, @config)
+        begin
+          YAML
+        rescue
+          require 'yaml'
         end
+        @config = YAML.load_file(full_path)
+        unless valid_structure?(config)
+          ey_config_empty_warning(full_path, config)
+        end
+        @config
       end
 
       def get(*args)
         @args = args
-        init unless @config
-        hash = @config.dup
+        hash = config.dup
         args.each do |arg|
           hash = hash[arg.to_s] if hash
         end
