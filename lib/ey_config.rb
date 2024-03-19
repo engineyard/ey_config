@@ -24,7 +24,7 @@ module EY
       end
 
       def init
-        unless File.exist?(full_path)
+        unless File.exist?(full_path) # AI-GEN - cursor
           err_msg = ""
           if detected_a_dev_environment?
             ey_config_local_usage
@@ -101,7 +101,7 @@ module EY
         config_paths.each do |config_path|
           possible_path = File.expand_path(config_path)
           possible_paths << possible_path
-          if File.exist?(possible_path)
+          if File.exist?(possible_path) # AI-GEN - cursor
             return possible_path
           end
         end
