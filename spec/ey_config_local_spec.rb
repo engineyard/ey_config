@@ -21,7 +21,7 @@ describe EY::Config::Local do
     end
 
     it 'should create ey_services_config_local.yml' do
-      File.exist?(EY::Config::Local.config_path).should be_true
+      expect(File.exist?(EY::Config::Local.config_path)).to be_truthy
     end
 
     it 'should add the keys passed from the command line' do
